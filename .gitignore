@@ -2,7 +2,3 @@
 *.o
 *.out
 *.gch
-
-ring
-ping_pong
-merge_sort

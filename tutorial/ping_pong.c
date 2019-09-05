@@ -2,7 +2,7 @@
 #include <mpi.h>
 #include <stdlib.h>
 
-#include "cronometer.h"
+#include "../cronometer.h"
 
 int main () {
     const int PING_PONG_LIMIT = 10;
