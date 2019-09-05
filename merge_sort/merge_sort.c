@@ -31,7 +31,6 @@ void merge (
         else {
             int value = array[start_];
             unsigned int index = start_;
-
             while (index != start) {
                 array[index] = array[index-1];
                 --index;
@@ -51,7 +50,7 @@ void merge_sort(
         unsigned int end ) {
 
     unsigned int length = end - start;
-    unsigned int middle = length / 2;
+    unsigned int middle = start + (end - start) / 2;
 
     if (length <= MIN_ARR_LEN) return bubble_sort(array, start, end);
     merge_sort(array, start, middle);
