@@ -1,12 +1,9 @@
-EXECS=merge_sort
 MPICC?=mpicc
 
-all: ${EXECS}
+all: test
 
-merge_sort: merge_sort.c
-	${MPICC} -c merge_sort.c ../cronometer.c ../cronometer.h
-
-test: merge_sort test.c
-	${MPICC} -o test test.c merge_sort.o cronometer.o
+test: merge_sort.c merge_sort.h test.c
+	${MPICC} -o test test.c merge_sort.c merge_sort.h 
+	
 clean:
-	rm -f ${EXECS} *.o *.out *.gch
+	rm -f *.o *.out *.gch

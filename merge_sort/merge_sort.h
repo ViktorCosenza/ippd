@@ -8,4 +8,6 @@ void merge (
         unsigned int start, 
         unsigned int middle, 
         unsigned int  end);
+
+void print_int_arr(int[], unsigned int, unsigned int);
         

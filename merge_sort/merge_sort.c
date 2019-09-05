@@ -3,11 +3,18 @@
 
 #include "merge_sort.h"
 
-#define MIN_ARR_LEN 10
+#define MIN_ARR_LEN 2
 
-void bubble_sort(
-        int [], 
-        unsigned int);
+
+void bubble_sort(int [], unsigned int, unsigned int);
+
+
+void print_int_arr(int arr[], unsigned int start, unsigned int end) {
+    for (unsigned int i = start; i<=end; ++i)
+        printf(" %d ->", arr[i]);
+    printf(" |\n");
+}
+
 
 void merge (
         int array[], 
@@ -16,6 +23,7 @@ void merge (
         unsigned int  end ) {
     
     unsigned int start_ = middle + 1;
+
     if (array[middle] <= array[start_]) return;
 
     while (start <= middle && start_ <= end) {
@@ -36,39 +44,32 @@ void merge (
     }
 }
 
+
 void merge_sort(
         int array[], 
         unsigned int start,
         unsigned int end ) {
-    unsigned int length = end - start;
-    if (length < 1) {
-        printf("Error: Length too small");
-        return;
-    }
-    if (length < MIN_ARR_LEN) 
-        return bubble_sort(array, length);
 
-    unsigned int middle = start + (end - start) / 2;
+    unsigned int length = end - start;
+    unsigned int middle = length / 2;
+
+    if (length <= MIN_ARR_LEN) return bubble_sort(array, start, end);
     merge_sort(array, start, middle);
     merge_sort(array, middle + 1, end);
     merge(array, start, middle, end);
 }
 
-
 void swap(int *a, int *b) {
-    int *temp = a;
+    int temp = *a;
     *a = *b;
-    *b = *a;
+    *b = temp;
 }
 
-
-void bubble_sort(
-        int array[], 
-        unsigned int length) {
+void bubble_sort(int array[], unsigned int start, unsigned int end) {
     int swapped;
-    for (int j=0; j<length; ++j) {
+    for (int j=start; j<=end; ++j) {
         swapped = 0;
-        for (int i=0; i<length-1; ++i) {
+        for (int i=start; i<=end-1; ++i) {
             if (array[i] > array[i+1]) {
                 swap(&array[i], &array[i+1]);
                 swapped = 1;
