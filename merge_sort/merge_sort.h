@@ -1,13 +1,11 @@
 void merge_sort (
-        void **array, 
+        int[], 
         unsigned int start,
-        unsigned int end, 
-        int (*comparator)(const void*, const void*));
+        unsigned int end);
 
 void merge (
-        void **array, 
+        int[], 
         unsigned int start, 
         unsigned int middle, 
-        unsigned int  end, 
-        int (*comparator)(const void*, const void*));
+        unsigned int  end);
         
