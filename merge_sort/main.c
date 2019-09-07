@@ -62,18 +62,18 @@ void maestro (
 
     worker(recv_buffer, sub_length, (void*) arr, my_rank, my_rank);
 
-    for (int i=0 ,start=0; 
-            i<num_workers && start < sub_length; 
-            ++i, start += sub_length) {
-        printf("Start: %d End: %d\n", arr[start], arr[start + sub_length]);
-        merge(arr, start, start + sub_length - 1, start + (2 * sub_length) - 1);
+    int middle = sub_length;
+    for (int i=0; 
+            i<num_workers - 1; 
+            ++i) {
+        merge(arr, 0, middle - 1 , (middle + sub_length) - 1);
+        middle += sub_length;
     }
 
     if (assert_asc_order(arr, arr_length))
         printf("Success: The Array is Sorted!\n");
     else { 
         printf("FAILURE: The Array is NOT Sorted!\n");
-        print_int_arr(arr, 0, arr_length - 1);
     }
     free(arr);
 }
@@ -83,7 +83,7 @@ int main () {
     /* Init */
     MPI_Init(NULL, NULL);
     int root_rank = 0;
-    int arr_length = 10;
+    int arr_length = 1000;
     int range = 100;
     int num_workers; 
     MPI_Comm_size(MPI_COMM_WORLD, &num_workers);
@@ -96,7 +96,7 @@ int main () {
     /* Work */
     if (my_rank == root_rank) maestro(recv_buffer, result_buffer, root_rank, arr_length, range);
     else worker((void *) recv_buffer, recv_count, NULL, root_rank, my_rank);
-
+    
     free(recv_buffer);    
     MPI_Finalize();
     return 0;
