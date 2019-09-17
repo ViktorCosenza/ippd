@@ -3,8 +3,8 @@
 #include <mpi.h>
 
 #include "merge_sort.h"
-#include "../utils/gen_random_ints.h"
-#include "../utils/cronometer.h"
+#include "../../utils/gen_random_ints.h"
+#include "../../utils/cronometer.h"
 
 
 /* Espera por uma tarefa e devolve o resultado */

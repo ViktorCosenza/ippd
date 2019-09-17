@@ -3,7 +3,7 @@
 
 int *gen_random_ints (unsigned int length, unsigned int max) {
     int *arr = malloc(sizeof(int) * length);
-    for (int i=0; i<length; ++i) {
+    for (int i=0; i<=length; ++i) {
         arr[i] = rand() % max;              
     }
     return arr;

@@ -1,8 +1,8 @@
 CC=mpicc
 CFLAGS= -Wall -g -O0
 
-RANDOM_INTS=../utils/gen_random_ints.c ../utils/gen_random_ints.h
-CRONOMETER=../utils/cronometer.c ../utils/cronometer.h
+RANDOM_INTS=../../utils/gen_random_ints.c ../../utils/gen_random_ints.h
+CRONOMETER=../../utils/cronometer.c ../../utils/cronometer.h
 UTILS=${RANDOM_INTS} ${CRONOMETER}
 
 all: main
