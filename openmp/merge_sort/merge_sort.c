@@ -3,7 +3,7 @@
 
 #include "merge_sort.h"
 
-#define MIN_ARR_LEN 4
+#define MIN_ARR_LEN 2
 
 
 void bubble_sort(int [], unsigned int, unsigned int);

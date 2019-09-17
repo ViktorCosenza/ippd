@@ -11,4 +11,4 @@ main: merge_sort.c merge_sort.h main.c
 	${CC} ${CFLAGS} -o main main.c merge_sort.c merge_sort.h ${UTILS}
 	
 clean:
-	rm -f *.o *.out *.gch
+	rm -f main *.o *.out *.gch
